@@ -1,6 +1,6 @@
-from .sample_data import STOPS
-from .route_algorithm import find_direct_routes
-from .connection_algorithm import find_connecting_routes
+from sample_data import STOPS
+from route_algorithm import find_direct_routes
+from connection_algorithm import find_connecting_routes
 
 
 def search_routes(source, destination):
