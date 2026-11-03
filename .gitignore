@@ -1,0 +1,3 @@
+__pycache__/
+*.py[cod]
+route_algorithm_map/generated_maps/*.html
