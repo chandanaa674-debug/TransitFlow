@@ -1,5 +1,6 @@
-from .sample_data import BUSES, STOPS, TRANSFER_WAIT_MINUTES
-from .distance_calculator import calculate_duration
+
+from sample_data import BUSES, STOPS, TRANSFER_WAIT_MINUTES
+from distance_calculator import calculate_duration
 
 
 def find_connecting_routes(source, destination):
@@ -12,7 +13,6 @@ def find_connecting_routes(source, destination):
         return routes
 
     for first_bus in BUSES:
-
         first_stops = first_bus["stops"]
 
         if source not in first_stops:
@@ -37,7 +37,6 @@ def find_connecting_routes(source, destination):
             ]
 
             for second_bus in BUSES:
-
                 if first_bus["bus_number"] == second_bus["bus_number"]:
                     continue
 
@@ -52,7 +51,7 @@ def find_connecting_routes(source, destination):
                 interchange_second_index = second_stops.index(interchange)
                 destination_index = second_stops.index(destination)
 
-                # Destination must come after the interchange.
+                # Destination must come after interchange.
                 if interchange_second_index >= destination_index:
                     continue
 
@@ -66,11 +65,15 @@ def find_connecting_routes(source, destination):
                     interchange_second_index:destination_index + 1
                 ]
 
-                total_duration = (
-                    first_duration
-                    + TRANSFER_WAIT_MINUTES
-                    + second_duration
-                )
+                # Do not invent journey durations when timing data is missing.
+                if first_duration is None or second_duration is None:
+                    total_duration = None
+                else:
+                    total_duration = (
+                        first_duration
+                        + TRANSFER_WAIT_MINUTES
+                        + second_duration
+                    )
 
                 combined_stops = (
                     first_route_stops + second_route_stops[1:]

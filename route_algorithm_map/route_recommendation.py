@@ -1,3 +1,4 @@
+
 from sample_data import STOPS
 from route_algorithm import find_direct_routes
 from connection_algorithm import find_connecting_routes
@@ -16,10 +17,12 @@ def search_routes(source, destination):
 
     all_routes = direct_routes + connecting_routes
 
-    # Fastest route first; fewer transfers wins a tie.
+    # If real timings are unavailable, prefer direct routes
+    # and then routes with fewer transfers.
     all_routes.sort(
         key=lambda route: (
-            route["total_minutes"],
+            route["total_minutes"] is None,
+            route["total_minutes"] if route["total_minutes"] is not None else float("inf"),
             route["transfers"]
         )
     )

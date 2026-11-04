@@ -1,5 +1,5 @@
-from .sample_data import BUSES, STOPS
-from .distance_calculator import calculate_duration
+from sample_data import BUSES, STOPS
+from distance_calculator import calculate_duration
 
 
 def find_direct_routes(source, destination):

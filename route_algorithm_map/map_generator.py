@@ -2,7 +2,7 @@
 from pathlib import Path
 import folium
 
-from .sample_data import STOPS
+from sample_data import STOPS
 
 
 def generate_route_map(route, output_file=None):
@@ -11,6 +11,20 @@ def generate_route_map(route, output_file=None):
         raise ValueError("No valid route provided")
 
     all_stop_ids = route["stops"]
+
+    # Check that actual coordinates are available.
+    missing_coordinates = [
+        STOPS[stop]["name"]
+        for stop in all_stop_ids
+        if STOPS[stop].get("lat") is None
+        or STOPS[stop].get("lon") is None
+    ]
+
+    if missing_coordinates:
+        raise ValueError(
+            "Map cannot be generated yet. Coordinates are missing for: "
+            + ", ".join(missing_coordinates[:10])
+        )
 
     coordinates = [
         [STOPS[stop]["lat"], STOPS[stop]["lon"]]
@@ -23,7 +37,7 @@ def generate_route_map(route, output_file=None):
     route_map = folium.Map(
         location=[center_lat, center_lon],
         zoom_start=13,
-        tiles="Esri.WorldStreetMap"
+        tiles="OpenStreetMap"
     )
 
     for index, stop_id in enumerate(all_stop_ids):
@@ -72,3 +86,4 @@ def generate_route_map(route, output_file=None):
     route_map.save(str(output_file))
 
     return str(output_file)
+
