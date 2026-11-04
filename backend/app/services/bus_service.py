@@ -8,7 +8,7 @@ def get_all_buses():
 
     db = get_firestore_client()
 
-    buses_collection = db.collection("buses")
+    buses_collection = db.collection("routes")
 
     documents = buses_collection.stream()
 
@@ -36,7 +36,7 @@ def get_bus_by_id(bus_id):
     db = get_firestore_client()
 
     document = (
-        db.collection("buses")
+        db.collection("routes")
         .document(bus_id)
         .get()
     )

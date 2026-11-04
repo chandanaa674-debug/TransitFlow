@@ -99,20 +99,21 @@ def create_journey(bus, source, destination):
     journey_stops = stops[source_index:destination_index + 1]
 
     return {
+           
         "bus_id": bus.get("id"),
-        "bus_number": bus.get("bus_number", "Not available"),
-        "route_name": bus.get("route_name", "Not available"),
+        "bus_number": bus.get("busNumber", "Not available"),
+        "route_name": bus.get("description", "Not available"),
         "source": get_stop_display_name(bus, source),
         "destination": get_stop_display_name(bus, destination),
         "stops": [
             get_stop_display_name(bus, stop)
             for stop in journey_stops
         ],
-        "duration_minutes": get_bus_duration(bus),
-        "fare": get_bus_fare(bus),
-        "timings": bus.get("timings", []),
-        "bus_type": bus.get("bus_type", "Not specified")
-    }
+        "duration_minutes": None,
+        "fare": None,
+        "timings": [],
+        "bus_type": "Not specified"
+      }
 
 
 def search_direct_buses(buses, source, destination):
@@ -132,9 +133,9 @@ def search_direct_buses(buses, source, destination):
         if journey:
             direct_results.append(journey)
 
-    direct_results.sort(
-        key=lambda item: item["duration_minutes"]
-    )
+        direct_results.sort(
+            key=lambda item: item["bus_number"]
+        )
 
     return direct_results
 
@@ -182,23 +183,15 @@ def search_connecting_buses(buses, source, destination):
                 if not second_journey:
                     continue
 
-                total_duration = (
-                    first_journey["duration_minutes"]
-                    + second_journey["duration_minutes"]
-                )
-
-                total_fare = (
-                    first_journey["fare"]
-                    + second_journey["fare"]
-                )
-
+                total_duration = None                
+                total_fare = None
                 connecting_results.append({
                     "journey_type": "connecting",
                     "source": first_journey["source"],
                     "destination": second_journey["destination"],
                     "interchange_stop": first_journey["destination"],
                     "total_duration_minutes": total_duration,
-                    "total_fare": round(total_fare, 2),
+                    "total_fare":total_fare,
                     "buses": [
                         first_journey,
                         second_journey
@@ -223,10 +216,9 @@ def search_connecting_buses(buses, source, destination):
             seen.add(key)
             unique_results.append(journey)
 
-    unique_results.sort(
-        key=lambda item: item["total_duration_minutes"]
-    )
-
+        unique_results.sort(
+           key=lambda item: item["interchange_stop"]
+        )
     return unique_results
 
 

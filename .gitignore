@@ -1,0 +1,16 @@
+# Firebase credentials
+serviceAccountKey.json
+backend/serviceAccountKey.json
+backend/.env
+
+# Python
+__pycache__/
+*.pyc
+venv/
+
+# Local environment files
+backend/.env.txt
+.env.txt
+
+# Editor settings
+.vscode/
