@@ -1,0 +1,1690 @@
+
+/* =========================================
+   RAASTA - MAIN STYLESHEET
+   Theme: Black + Muted Mustard Yellow
+========================================= */
+
+/* GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ROOT VARIABLES */
+:root {
+    --black: #171717;
+    --charcoal: #292929;
+    --yellow: #E5B83B;
+    --dark-yellow: #C99B24;
+    --ivory: #F3F0E8;
+    --white: #FFFFFF;
+    --grey: #777777;
+    --light-grey: #EAE7DF;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--ivory);
+    color: var(--black);
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* =========================================
+   NAVIGATION BAR
+========================================= */
+
+.navbar {
+    width: 100%;
+    min-height: 80px;
+    padding: 18px 7%;
+    background: var(--black);
+    color: var(--white);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.brand {
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--white);
+}
+
+.brand-icon,
+.brand-dot {
+    color: var(--yellow);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: #D5D5D5;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--yellow);
+}
+
+.nav-links .admin-link {
+    background: var(--yellow);
+    color: var(--black);
+    padding: 10px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+.nav-links .admin-link:hover {
+    background: var(--dark-yellow);
+}
+
+.menu-toggle {
+    display: none;
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 27px;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero {
+    min-height: 590px;
+    padding: 90px 7%;
+
+    background: var(--black);
+    color: var(--white);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero-content .eyebrow {
+    color: var(--yellow);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.hero-content h1 {
+    font-size: clamp(42px, 6vw, 72px);
+    line-height: 1.15;
+    margin: 22px 0;
+}
+
+.hero-content h1 span {
+    color: var(--yellow);
+}
+
+.hero-content p {
+    color: #BDBDBD;
+    font-size: 16px;
+    max-width: 500px;
+    margin-bottom: 32px;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--black);
+    padding: 14px 25px;
+    border-radius: 7px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: var(--dark-yellow);
+    transform: translateY(-3px);
+}
+
+.btn-outline {
+    display: inline-block;
+    border: 1px solid #777777;
+    color: white;
+    padding: 14px 25px;
+    border-radius: 7px;
+    transition: 0.3s;
+}
+
+.btn-outline:hover {
+    border-color: var(--yellow);
+    color: var(--yellow);
+}
+
+/* =========================================
+   HERO VISUAL
+========================================= */
+
+.hero-art {
+    flex: 1;
+    max-width: 460px;
+}
+
+.journey-preview {
+    background: var(--charcoal);
+    padding: 35px;
+    border: 1px solid #444444;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.journey-preview h3 {
+    color: var(--yellow);
+    margin-bottom: 25px;
+}
+
+.journey-stop {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 22px 0;
+    color: #E5E5E5;
+}
+
+.stop-dot {
+    width: 13px;
+    height: 13px;
+    background: var(--yellow);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.stop-line {
+    width: 2px;
+    height: 25px;
+    background: #777777;
+    margin-left: 5px;
+}
+
+.floating-note {
+    background: var(--yellow);
+    color: var(--black);
+    padding: 13px 18px;
+    border-radius: 10px;
+    margin-top: 25px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* =========================================
+   COMMON SECTIONS
+========================================= */
+
+.section {
+    padding: 85px 7%;
+}
+
+.section-heading {
+    margin-bottom: 35px;
+}
+
+.section-heading .eyebrow {
+    color: var(--dark-yellow);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.section-heading h2 {
+    font-size: 35px;
+    margin: 10px 0;
+}
+
+.section-heading p {
+    color: var(--grey);
+    max-width: 600px;
+}
+
+/* =========================================
+   BUS SEARCH SECTION
+========================================= */
+
+.search-panel {
+    background: var(--white);
+    padding: 35px;
+    border-radius: 14px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto;
+    align-items: end;
+    gap: 18px;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.06);
+}
+
+.field {
+    width: 100%;
+}
+
+.field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.field input,
+.field select,
+.field textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    background: #FAFAFA;
+    outline: none;
+    font-size: 14px;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: var(--dark-yellow);
+}
+
+.swap-button {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: var(--yellow);
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.swap-button:hover {
+    background: var(--dark-yellow);
+    transform: rotate(180deg);
+}
+
+.search-button {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    padding: 14px 25px;
+    border-radius: 7px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.search-button:hover {
+    background: var(--dark-yellow);
+    color: var(--black);
+}
+
+/* =========================================
+   BUS RESULTS
+========================================= */
+
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    margin-top: 30px;
+}
+
+.bus-card {
+    background: var(--white);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #E5E2DA;
+    transition: 0.3s;
+}
+
+.bus-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.bus-card h3 {
+    font-size: 19px;
+    margin-bottom: 8px;
+}
+
+.bus-card .bus-number {
+    color: var(--dark-yellow);
+    font-weight: 700;
+    font-size: 13px;
+}
+
+.bus-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0;
+    color: var(--grey);
+    font-size: 13px;
+}
+
+.bus-stops {
+    border-top: 1px solid var(--light-grey);
+    padding-top: 15px;
+    font-size: 13px;
+    color: #555555;
+}
+
+.bus-fare {
+    font-size: 23px;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.empty-state {
+    background: white;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    color: var(--grey);
+}
+
+.filters {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.filters select {
+    padding: 11px 15px;
+    border: 1px solid #DDDDDD;
+    border-radius: 7px;
+    background: white;
+}
+
+/* =========================================
+   MAP SECTION
+========================================= */
+
+.map-section {
+    background: var(--black);
+    color: white;
+}
+
+.map-placeholder {
+    min-height: 320px;
+    background: var(--charcoal);
+    border: 1px solid #444444;
+    border-radius: 14px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 30px;
+}
+
+.map-placeholder h3 {
+    color: var(--yellow);
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.map-placeholder p {
+    color: #BBBBBB;
+}
+
+/* =========================================
+   FEEDBACK AND BUS DELAY FORMS
+========================================= */
+
+.community-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    align-items: stretch;
+}
+
+.form-card {
+    width: 100%;
+    min-width: 0;
+    background: var(--white);
+    padding: 30px;
+    border-radius: 14px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+}
+
+.form-card h3 {
+    font-size: 19px;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Each form field appears vertically */
+
+.form-card .field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    width: 100%;
+    margin: 0;
+}
+
+.form-card .field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.form-card input,
+.form-card select,
+.form-card textarea {
+    display: block;
+    width: 100%;
+    padding: 13px 15px;
+
+    border: 1px solid #D8D5CD;
+    border-radius: 7px;
+
+    background: #FAFAFA;
+    color: var(--black);
+
+    font-size: 14px;
+    outline: none;
+}
+
+.form-card textarea {
+    min-height: 115px;
+    resize: vertical;
+}
+
+.form-card input:focus,
+.form-card select:focus,
+.form-card textarea:focus {
+    border-color: var(--dark-yellow);
+    box-shadow: 0 0 0 3px rgba(229, 184, 59, 0.15);
+}
+
+/* Form submit buttons */
+
+.form-card .button-dark {
+    align-self: flex-start;
+
+    background: var(--black);
+    color: var(--white);
+
+    padding: 13px 24px;
+    border: none;
+    border-radius: 7px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.form-card .button-dark:hover {
+    background: var(--yellow);
+    color: var(--black);
+}
+
+/* Form information note */
+
+.form-note {
+    color: var(--grey);
+    font-size: 13px;
+    margin-top: 15px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    background: var(--black);
+    color: #AAAAAA;
+    padding: 35px 7%;
+    text-align: center;
+    font-size: 13px;
+}
+
+footer span {
+    color: var(--yellow);
+}
+
+/* =========================================
+   ADMIN DASHBOARD
+========================================= */
+
+.admin-page {
+    display: flex;
+    min-height: 100vh;
+    background: var(--ivory);
+}
+
+.admin-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    background: var(--black);
+    color: white;
+    padding: 30px 20px;
+}
+
+.admin-sidebar .brand {
+    display: block;
+    margin-bottom: 45px;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 13px 15px;
+    color: #CCCCCC;
+    border-radius: 7px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+    background: var(--yellow);
+    color: var(--black);
+}
+
+.admin-main {
+    flex: 1;
+    min-width: 0;
+    padding: 40px;
+}
+
+.welcome-banner {
+    background: var(--black);
+    color: white;
+    padding: 30px;
+    border-radius: 13px;
+    margin-bottom: 30px;
+}
+
+.welcome-banner h1 {
+    color: var(--yellow);
+    font-size: 28px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+}
+
+.stat-card h3 {
+    font-size: 28px;
+    color: var(--dark-yellow);
+}
+
+.stat-card p {
+    color: var(--grey);
+    font-size: 13px;
+}
+
+.table-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    overflow-x: auto;
+}
+
+.table-card h2 {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 500px;
+}
+
+th,
+td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #EEEEEE;
+    font-size: 13px;
+}
+
+th {
+    background: #F7F5EF;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN - TABLETS
+========================================= */
+
+@media (max-width: 900px) {
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-art {
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .search-panel {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* =========================================
+   RESPONSIVE DESIGN - MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+    .navbar {
+        padding: 15px 5%;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+
+        position: absolute;
+        top: 75px;
+        left: 0;
+
+        width: 100%;
+        background: var(--black);
+
+        padding: 25px;
+
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .nav-links.show {
+        display: flex;
+    }
+
+    .hero {
+        padding: 65px 6%;
+    }
+
+    .hero-content h1 {
+        font-size: 43px;
+    }
+
+    .section {
+        padding: 60px 6%;
+    }
+
+    .section-heading h2 {
+        font-size: 28px;
+    }
+
+    .search-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .swap-button {
+        justify-self: center;
+        transform: rotate(90deg);
+    }
+
+    .community-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-card {
+        padding: 23px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .admin-page {
+        flex-direction: column;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+    }
+
+    .admin-main {
+        padding: 20px;
+    }
+}
+
+/* =========================================
+   SMALL MOBILE SCREENS
+========================================= */
+
+@media (max-width: 400px) {
+
+    .hero-content h1 {
+        font-size: 35px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .journey-preview {
+        padding: 22px;
+    }
+    
+/* ADMIN REPORTS AND FEEDBACK */
+#routeMap {
+    width: 100%;
+    height: 450px;
+    border-radius: 15px;
+}
+
+#adminReports,
+#adminFeedback {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#adminReports p,
+#adminFeedback p {
+    background: #F8F6F0;
+    padding: 18px;
+    border-radius: 8px;
+    border-left: 4px solid #E5B83B;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+#adminReports small,
+#adminFeedback small {
+    display: block;
+    color: #888;
+    font-size: 11px;
+    margin-top: 8px;
+}
+
+.admin-main section {
+    scroll-margin-top: 25px;
+}
+
+.sidebar-link {
+    transition: 0.3s ease;
+}
+
+/* =========================================
+   RAASTA - NEW FEATURES
+========================================= */
+
+/* ROUTE COMPARISON */
+
+.comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin: 30px 0;
+}
+
+.comparison-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E2DA;
+    border-radius: 13px;
+    padding: 23px;
+    transition: 0.3s;
+}
+
+.comparison-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+}
+
+.comparison-card.recommended {
+    border: 2px solid #E5B83B;
+}
+
+.comparison-card .comparison-label {
+    color: #A17A18;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.comparison-card h3 {
+    font-size: 19px;
+    margin: 10px 0;
+}
+
+.comparison-card .comparison-value {
+    font-size: 29px;
+    font-weight: 700;
+    color: #171717;
+    margin: 12px 0;
+}
+
+.comparison-card p {
+    color: #777777;
+    font-size: 13px;
+    margin-bottom: 7px;
+}
+
+.comparison-card button,
+.favorite-card button,
+.timeline-save-button {
+    background: #171717;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.comparison-card button:hover,
+.favorite-card button:hover,
+.timeline-save-button:hover {
+    background: #E5B83B;
+    color: #171717;
+}
+
+/* ROUTE TIMELINE */
+
+.timeline-section {
+    margin-top: 35px;
+}
+
+.timeline-card {
+    background: #FFFFFF;
+    border-radius: 14px;
+    padding: 28px;
+    border: 1px solid #E5E2DA;
+}
+
+.timeline-card h3 {
+    margin-bottom: 20px;
+}
+
+.timeline-stop {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    padding-bottom: 24px;
+}
+
+.timeline-stop:last-child {
+    padding-bottom: 0;
+}
+
+.timeline-marker {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #E5B83B;
+    border: 3px solid #F3E5B8;
+    margin-top: 5px;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.timeline-stop:not(:last-child) .timeline-marker::after {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: 3px;
+    width: 2px;
+    height: 38px;
+    background: #D8C58E;
+}
+
+.timeline-stop strong {
+    font-size: 14px;
+}
+
+.timeline-stop small {
+    display: block;
+    color: #888888;
+    font-size: 12px;
+}
+
+/* NEARBY STOPS */
+
+.nearby-section {
+    background: #F3F0E8;
+}
+
+.nearby-message {
+    color: #777777;
+    font-size: 13px;
+    margin: 18px 0;
+}
+
+.nearby-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 22px;
+}
+
+.nearby-card {
+    background: #FFFFFF;
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid #E5E2DA;
+    transition: 0.3s;
+}
+
+.nearby-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+}
+
+.nearby-card h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.nearby-card p {
+    color: #777777;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.nearby-card button {
+    margin-top: 12px;
+    border: none;
+    background: #E5B83B;
+    color: #171717;
+    padding: 9px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* FAVOURITE ROUTES */
+
+.favorites-section {
+    background: #FFFFFF;
+}
+
+.favorites-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+.favorite-card {
+    background: #F8F6F0;
+    padding: 23px;
+    border-radius: 12px;
+    border: 1px solid #E5E2DA;
+}
+
+.favorite-card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.favorite-card p {
+    color: #777777;
+    font-size: 13px;
+}
+
+.favorite-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.favorite-card .remove-favorite {
+    background: transparent;
+    color: #A43A3A;
+    border: 1px solid #A43A3A;
+}
+
+.favorite-card .remove-favorite:hover {
+    background: #A43A3A;
+    color: white;
+}
+
+.save-route-button {
+    display: inline-block;
+    margin-top: 12px;
+    background: transparent;
+    border: 1px solid #C99B24;
+    color: #8A6714;
+    padding: 8px 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.save-route-button:hover {
+    background: #E5B83B;
+    color: #171717;
+}
+
+/* EMPTY STATES */
+
+.feature-empty {
+    background: #FFFFFF;
+    border: 1px dashed #D8D2C4;
+    border-radius: 10px;
+    padding: 25px;
+    color: #777777;
+    text-align: center;
+    grid-column: 1 / -1;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+    .comparison-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .comparison-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-card {
+        padding: 20px;/* ==============================
+   RAASTA SCROLL JOURNEY
+================================ */
+
+.scroll-journey {
+    position: fixed;
+    right: 25px;
+    top: 12%;
+    bottom: 12%;
+    width: 45px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.road-track {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(
+        to bottom,
+        #555 0px,
+        #555 10px,
+        transparent 10px,
+        transparent 19px
+    );
+    border-radius: 10px;
+    opacity: 0.7;
+}
+
+.road-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: #E5B83B;
+    border-radius: 10px;
+    transition: height 0.12s linear;
+}
+
+.moving-bus {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #292929;
+    border: 2px solid #E5B83B;
+    border-radius: 50%;
+    box-shadow: 0 0 18px rgba(229, 184, 59, 0.25);
+    transition: top 0.12s linear;
+}
+
+.moving-bus svg {
+    width: 32px;
+    height: 32px;
+}
+
+/* ==============================
+   SCROLL REVEAL ANIMATIONS
+================================ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s cubic-bezier(.2, .7, .2, 1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ==============================
+   HOVER EFFECTS
+================================ */
+
+.bus-card,
+.nearby-card,
+.favorite-card,
+.comparison-card,
+.stat-card {
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.bus-card:hover,
+.nearby-card:hover,
+.favorite-card:hover,
+.comparison-card:hover,
+.stat-card:hover {
+    transform: translateY(-6px);
+    border-color: #E5B83B;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+button {
+    transition: all 0.3s ease;
+}
+
+/* Mobile: hide the side road */
+@media (max-width: 768px) {
+    .scroll-journey {
+        display: none;
+    }
+}
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .moving-bus,
+    .road-progress,
+    .bus-card,
+    .nearby-card,
+    .favorite-card {
+        transition: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+    }
+}
+
+}
+
+/* =====================================
+   RAASTA - MOVING BUS SCROLL ANIMATION
+===================================== */
+
+.scroll-journey {
+    position: fixed;
+    right: 25px;
+    top: 12%;
+    bottom: 12%;
+    width: 50px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+/* Road track */
+
+.road-track {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    transform: translateX(-50%);
+
+    background: repeating-linear-gradient(
+        to bottom,
+        #777 0px,
+        #777 12px,
+        transparent 12px,
+        transparent 22px
+    );
+
+    border-radius: 10px;
+}
+
+/* Yellow road progress */
+
+.road-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+
+    background: #E5B83B;
+    border-radius: 10px;
+
+    transition: height 0.15s linear;
+}
+
+/* Moving bus */
+
+.moving-bus {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #292929;
+    border: 2px solid #E5B83B;
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+
+    box-shadow:
+        0 0 10px rgba(229, 184, 59, 0.3),
+        0 0 25px rgba(229, 184, 59, 0.15);
+
+    transition: top 0.15s linear;
+}
+
+/* Bus icon */
+
+.moving-bus svg {
+    width: 34px;
+    height: 34px;
+    display: block;
+}
+
+/* Subtle glow */
+
+.moving-bus::after {
+    content: "";
+    position: absolute;
+    inset: -7px;
+
+    border: 1px solid rgba(229, 184, 59, 0.3);
+    border-radius: 50%;
+
+    animation: busGlow 2s infinite ease-in-out;
+}
+
+@keyframes busGlow {
+    0%, 100% {
+        transform: scale(0.9);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+/* Hide on smaller screens */
+
+@media (max-width: 768px) {
+    .scroll-journey {
+        display: none;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .moving-bus::after {
+        animation: none;
+    }
+    
+/* =====================================
+   RAASTA ANIMATED ROUTE BACKGROUND
+===================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Background container */
+
+.raasta-route-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at 75% 35%,
+            rgba(229, 184, 59, 0.09),
+            transparent 55%
+        ),
+        #171717;
+}
+
+/* SVG route */
+
+.route-svg {
+    position: absolute;
+    width: 110%;
+    height: 100%;
+    left: -5%;
+    top: 0;
+    overflow: visible;
+}
+
+/* Animated route */
+
+.animated-route {
+    animation: routeGlow 3s ease-in-out infinite;
+}
+
+@keyframes routeGlow {
+    0%, 100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+/* Route labels */
+
+.route-label {
+    fill: #E5B83B;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* Moving bus */
+
+.route-bus {
+    filter: drop-shadow(
+        0 0 8px rgba(229, 184, 59, 0.65)
+    );
+}
+
+/* Keep hero content above background */
+
+.hero-content,
+.hero-art {
+    position: relative;
+    z-index: 2;
+}
+
+/* Dark gradient overlay for text readability */
+
+.raasta-route-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        90deg,
+        rgba(23, 23, 23, 0.88) 0%,
+        rgba(23, 23, 23, 0.40) 55%,
+        rgba(23, 23, 23, 0.65) 100%
+    );
+
+    pointer-events: none;
+}
+
+/* Mobile adjustments */
+
+@media (max-width: 768px) {
+
+    .route-svg {
+        width: 160%;
+        left: -30%;
+        opacity: 0.65;
+    }
+
+    .route-label {
+        font-size: 12px;
+    }
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .animated-route {
+        animation: none;
+    }
+
+    .route-bus {
+        display: none;
+    }
+}
+
+/* =====================================
+   RAASTA - MOVING BUS SCROLL ANIMATION
+===================================== */
+
+.scroll-journey {
+    position: fixed;
+    right: 25px;
+    top: 12%;
+    bottom: 12%;
+    width: 50px;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+/* Road track */
+
+.road-track {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    transform: translateX(-50%);
+
+    background: repeating-linear-gradient(
+        to bottom,
+        #777 0px,
+        #777 12px,
+        transparent 12px,
+        transparent 22px
+    );
+
+    border-radius: 10px;
+}
+
+/* Yellow road progress */
+
+.road-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+
+    background: #E5B83B;
+    border-radius: 10px;
+
+    transition: height 0.15s linear;
+}
+
+/* Moving bus */
+
+.moving-bus {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    width: 48px;
+    height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #292929;
+    border: 2px solid #E5B83B;
+    border-radius: 50%;
+
+    transform: translate(-50%, -50%);
+
+    box-shadow:
+        0 0 10px rgba(229, 184, 59, 0.3),
+        0 0 25px rgba(229, 184, 59, 0.15);
+
+    transition: top 0.15s linear;
+}
+
+/* Bus icon */
+
+.moving-bus svg {
+    width: 34px;
+    height: 34px;
+    display: block;
+}
+
+/* Subtle glow */
+
+.moving-bus::after {
+    content: "";
+    position: absolute;
+    inset: -7px;
+
+    border: 1px solid rgba(229, 184, 59, 0.3);
+    border-radius: 50%;
+
+    animation: busGlow 2s infinite ease-in-out;
+}
+
+@keyframes busGlow {
+    0%, 100% {
+        transform: scale(0.9);
+        opacity: 0.4;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+/* Hide on smaller screens */
+
+@media (max-width: 768px) {
+    .scroll-journey {
+        display: none;
+    }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+    .moving-bus::after {
+        animation: none;
+    }
+}
+
+}
+
