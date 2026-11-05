@@ -1,11 +1,52 @@
-# Firebase credentials
-serviceAccountKey.json
-firebase-adminsdk*.json
 
-# Python
+# Python cache files
 __pycache__/
-*.pyc
-venv/
+*.py[cod]
+*$py.class
 
-# Environment variables
+# Virtual environments
+venv/
+env/
+.venv/
+ENV/
+
+# Environment variables and secrets
 .env
+.env.*
+!.env.example
+
+# Python testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+
+# Node.js dependencies (if frontend uses Node)
+node_modules/
+
+# Frontend build output
+frontend/dist/
+frontend/build/
+
+# Temporary files
+*.tmp
+*.bak
