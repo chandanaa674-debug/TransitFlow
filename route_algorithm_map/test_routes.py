@@ -1,6 +1,6 @@
-from sample_data import STOPS
-from route_recommendation import search_routes
-from map_generator import generate_route_map
+from .sample_data import STOPS
+from .route_recommendation import search_routes
+from .map_generator import generate_route_map
 
 
 def main():
