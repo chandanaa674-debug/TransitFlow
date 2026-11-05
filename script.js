@@ -1154,7 +1154,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 // RAASTA SCROLL JOURNEY ANIMATION
 // ===================================
 
-const movingBus = document.getElementById("movingBus");
+
 const roadProgress = document.getElementById("roadProgress");
 
 function updateScrollJourney() {
@@ -1235,7 +1235,7 @@ if ("IntersectionObserver" in window) {
 // RAASTA BUS SCROLL ANIMATION
 
 const movingBus = document.getElementById("movingBus");
-const roadProgress = document.getElementById("roadProgress");
+
 
 function updateBusAnimation() {
 
