@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_50b4723fbf35374c5236720074e11df7 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_50b4723fbf35374c5236720074e11df7" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_50b4723fbf35374c5236720074e11df7 = L.map(
+                "map_50b4723fbf35374c5236720074e11df7",
+                {
+                    center: [12.86175, 74.84875],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_dc068b1447265e573801a4ce83368241 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Tiles \u0026copy; Esri \u0026mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_dc068b1447265e573801a4ce83368241.addTo(map_50b4723fbf35374c5236720074e11df7);
+        
+    
+            var marker_ecc71418e8f29cb3bbcec444d9ae1657 = L.marker(
+                [12.865, 74.842],
+                {
+}
+            ).addTo(map_50b4723fbf35374c5236720074e11df7);
+        
+    
+            var icon_9e4268c3c655218175ac5bc453479863 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_86b8f1a0cf7509d5fedcefb193c84078 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d57115c67dbf5af9fc616fbc0cb2d435 = $(`<div id="html_d57115c67dbf5af9fc616fbc0cb2d435" style="width: 100.0%; height: 100.0%;">State Bank</div>`)[0];
+                popup_86b8f1a0cf7509d5fedcefb193c84078.setContent(html_d57115c67dbf5af9fc616fbc0cb2d435);
+            
+        
+
+        marker_ecc71418e8f29cb3bbcec444d9ae1657.bindPopup(popup_86b8f1a0cf7509d5fedcefb193c84078)
+        ;
+
+        
+    
+    
+            marker_ecc71418e8f29cb3bbcec444d9ae1657.bindTooltip(
+                `<div>
+                     State Bank
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ecc71418e8f29cb3bbcec444d9ae1657.setIcon(icon_9e4268c3c655218175ac5bc453479863);
+            
+    
+            var marker_b085ba6acfb211e9a66ca54096901944 = L.marker(
+                [12.869, 74.843],
+                {
+}
+            ).addTo(map_50b4723fbf35374c5236720074e11df7);
+        
+    
+            var icon_d3b182106ef04f1f0700599587c7ad3d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_95f3c8849e2a551cd7644084669a2f7d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8f7265b3c5c04927787a82ad2045bd35 = $(`<div id="html_8f7265b3c5c04927787a82ad2045bd35" style="width: 100.0%; height: 100.0%;">Hampankatta</div>`)[0];
+                popup_95f3c8849e2a551cd7644084669a2f7d.setContent(html_8f7265b3c5c04927787a82ad2045bd35);
+            
+        
+
+        marker_b085ba6acfb211e9a66ca54096901944.bindPopup(popup_95f3c8849e2a551cd7644084669a2f7d)
+        ;
+
+        
+    
+    
+            marker_b085ba6acfb211e9a66ca54096901944.bindTooltip(
+                `<div>
+                     Hampankatta
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b085ba6acfb211e9a66ca54096901944.setIcon(icon_d3b182106ef04f1f0700599587c7ad3d);
+            
+    
+            var marker_25c48bee6c45fc62137cfec908ecedc8 = L.marker(
+                [12.878, 74.852],
+                {
+}
+            ).addTo(map_50b4723fbf35374c5236720074e11df7);
+        
+    
+            var icon_54fd92e5de5352e00f10bec8c45ea148 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2203cf252c54abc046e931abbeeacf9f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ef32ef2f40e316312783bf74c3f9daae = $(`<div id="html_ef32ef2f40e316312783bf74c3f9daae" style="width: 100.0%; height: 100.0%;">Kankanady</div>`)[0];
+                popup_2203cf252c54abc046e931abbeeacf9f.setContent(html_ef32ef2f40e316312783bf74c3f9daae);
+            
+        
+
+        marker_25c48bee6c45fc62137cfec908ecedc8.bindPopup(popup_2203cf252c54abc046e931abbeeacf9f)
+        ;
+
+        
+    
+    
+            marker_25c48bee6c45fc62137cfec908ecedc8.bindTooltip(
+                `<div>
+                     Kankanady
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_25c48bee6c45fc62137cfec908ecedc8.setIcon(icon_54fd92e5de5352e00f10bec8c45ea148);
+            
+    
+            var marker_5e44da89ac07ec43aecda4e88c5e2225 = L.marker(
+                [12.835, 74.858],
+                {
+}
+            ).addTo(map_50b4723fbf35374c5236720074e11df7);
+        
+    
+            var icon_560490d3d0b33882acc6782f22cbf8f5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2a5eab4387cf1ef0243037e21e82b078 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_79e624d94fd1e0be9b5fa6321d6d1471 = $(`<div id="html_79e624d94fd1e0be9b5fa6321d6d1471" style="width: 100.0%; height: 100.0%;">Thokkottu</div>`)[0];
+                popup_2a5eab4387cf1ef0243037e21e82b078.setContent(html_79e624d94fd1e0be9b5fa6321d6d1471);
+            
+        
+
+        marker_5e44da89ac07ec43aecda4e88c5e2225.bindPopup(popup_2a5eab4387cf1ef0243037e21e82b078)
+        ;
+
+        
+    
+    
+            marker_5e44da89ac07ec43aecda4e88c5e2225.bindTooltip(
+                `<div>
+                     Thokkottu
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5e44da89ac07ec43aecda4e88c5e2225.setIcon(icon_560490d3d0b33882acc6782f22cbf8f5);
+            
+    
+            var poly_line_d40a83510168e24da9976eebcab7de30 = L.polyline(
+                [[12.865, 74.842], [12.869, 74.843], [12.878, 74.852]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_50b4723fbf35374c5236720074e11df7);
+        
+    
+            poly_line_d40a83510168e24da9976eebcab7de30.bindTooltip(
+                `<div>
+                     Bus 101
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var poly_line_675ce9db9724bcb238c304cdaff2eee3 = L.polyline(
+                [[12.878, 74.852], [12.835, 74.858]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_50b4723fbf35374c5236720074e11df7);
+        
+    
+            poly_line_675ce9db9724bcb238c304cdaff2eee3.bindTooltip(
+                `<div>
+                     Bus 102
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
