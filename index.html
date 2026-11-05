@@ -1,0 +1,745 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RAASTA | Your City. Your Route. Your Way.</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet Map CSS -->
+    <link rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <!-- MOVING BUS ANIMATION CSS -->
+    <style>
+
+        .scroll-journey {
+            position: fixed;
+            right: 22px;
+            top: 12%;
+            bottom: 12%;
+            width: 50px;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .road-track {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            transform: translateX(-50%);
+
+            background: repeating-linear-gradient(
+                to bottom,
+                #777 0px,
+                #777 12px,
+                transparent 12px,
+                transparent 22px
+            );
+
+            border-radius: 10px;
+        }
+
+        .road-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+
+            background: #E5B83B;
+            border-radius: 10px;
+        }
+
+        .moving-bus {
+            position: absolute;
+            top: 0;
+            left: 50%;
+
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #292929;
+            border: 2px solid #E5B83B;
+            border-radius: 50%;
+
+            transform: translate(-50%, -50%);
+
+            box-shadow: 0 0 18px rgba(229, 184, 59, 0.35);
+
+            transition: top 0.12s linear;
+        }
+
+        .moving-bus svg {
+            width: 34px;
+            height: 34px;
+        }
+
+        .moving-bus::after {
+            content: "";
+            position: absolute;
+            inset: -7px;
+
+            border: 1px solid rgba(229, 184, 59, 0.4);
+            border-radius: 50%;
+
+            animation: busGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes busGlow {
+            0%, 100% {
+                transform: scale(0.9);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: scale(1.15);
+                opacity: 1;
+            }
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media (max-width: 768px) {
+            .scroll-journey {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .moving-bus::after {
+                animation: none;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <a href="#home" class="brand">
+            RAASTA<span class="brand-dot">.</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle"
+            aria-label="Toggle menu">
+            ☰
+        </button>
+
+        <nav class="nav-links" id="navLinks">
+
+            <a class="active" href="#home">Home</a>
+            <a href="#search">Find a Bus</a>
+            <a href="#results">Routes</a>
+            <a href="#nearby">Nearby</a>
+            <a href="#map">Explore</a>
+            <a href="#favorites">Saved</a>
+            <a href="#feedback">Feedback</a>
+
+        </nav>
+
+        <a class="admin-link" href="admin.html">
+            Admin Portal ↗
+        </a>
+
+    </header>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main>
+
+
+        <!-- HERO SECTION -->
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    ● SMARTER CITY MOBILITY
+                </span>
+
+                <h1>
+                    Your City.<br>
+                    <span>Your Raasta.</span>
+                </h1>
+
+                <p>
+                    Discover an easier way to get around Mangaluru.
+                    Find buses, explore routes and plan your next
+                    journey with confidence.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a class="button button-yellow" href="#search">
+                        Plan Your Journey →
+                    </a>
+
+                    <a class="button button-outline" href="#results">
+                        Explore Routes
+                    </a>
+
+                </div>
+
+                <small class="hero-note">
+                    ✦ Every journey begins with the right route.
+                </small>
+
+            </div>
+
+
+            <!-- HERO VISUAL -->
+
+            <div class="hero-art">
+
+                <div class="orbit"></div>
+
+                <div class="journey-preview">
+
+                    <div class="preview-head">
+                        <span>YOUR NEXT JOURNEY</span>
+                        <b>● PLAN AHEAD</b>
+                    </div>
+
+                    <div class="preview-stop">
+
+                        <i class="stop-dot start"></i>
+
+                        <div>
+                            <small>STARTING POINT</small>
+                            <strong>Choose your location</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="preview-line"></div>
+
+                    <div class="preview-stop">
+
+                        <i class="stop-dot finish"></i>
+
+                        <div>
+                            <small>DESTINATION</small>
+                            <strong>Where do you want to go?</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="preview-foot">
+                        FIND YOUR RAASTA
+                        <span>↗</span>
+                    </div>
+
+                </div>
+
+                <div class="floating-note">
+                    ✦ Your journey starts here
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= NEARBY BUS STOPS ================= -->
+
+        <section class="section nearby-section" id="nearby">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">AROUND YOU</span>
+
+                <h2>Find nearby bus stops.</h2>
+
+                <p>
+                    Discover bus stops close to your current location.
+                </p>
+
+            </div>
+
+            <button id="nearbyButton" class="button-dark" type="button">
+                <span>⌖</span> Find Buses Near Me
+            </button>
+
+            <p id="nearbyMessage" class="nearby-message">
+                Allow location access to discover nearby bus stops.
+            </p>
+
+            <div id="nearbyResults" class="nearby-grid"></div>
+
+        </section>
+
+
+        <!-- ================= BUS SEARCH ================= -->
+
+        <section class="section" id="search">
+
+            <div class="section-heading">
+
+                <span class="section-kicker">
+                    PLAN A JOURNEY
+                </span>
+
+                <h2>
+                    Where would you like to <em>go?</em>
+                </h2>
+
+                <p>
+                    Choose your starting point and destination
+                    to find matching demo routes.
+                </p>
+
+            </div>
+
+
+            <div class="search-panel">
+
+                <label class="field">
+
+                    FROM
+
+                    <select id="source">
+                        <option value="">Select starting point</option>
+                    </select>
+
+                </label>
+
+
+                <button class="swap-button" id="swapButton"
+                    type="button" aria-label="Swap locations">
+                    ⇄
+                </button>
+
+
+                <label class="field">
+
+                    TO
+
+                    <select id="destination">
+                        <option value="">Select destination</option>
+                    </select>
+
+                </label>
+
+
+                <button class="button button-yellow"
+                    id="searchButton" type="button">
+
+                    Find Buses →
+
+                </button>
+
+            </div>
+
+            <p class="demo-note">
+                Demo only: bus names, routes, timings and fares
+                are illustrative, not verified live Mangaluru services.
+            </p>
+
+        </section>
+
+
+        <!-- ================= ROUTE RESULTS ================= -->
+
+        <section class="section results-section" id="results">
+
+            <div class="section-heading section-heading-row">
+
+                <div>
+
+                    <span class="section-kicker">
+                        ROUTE DISCOVERY
+                    </span>
+
+                    <h2>
+                        Explore your <em>options</em>
+                    </h2>
+
+                    <p id="resultsMessage">
+                        Choose a source and destination to search.
+                    </p>
+
+                </div>
+
+
+                <!-- FILTERS -->
+
+                <div class="filters">
+
+                    <select id="operatorFilter"
+                        aria-label="Operator filter">
+
+                        <option value="all">All Operators</option>
+                        <option value="Government">Government</option>
+                        <option value="Private">Private</option>
+
+                    </select>
+
+
+                    <select id="routeFilter"
+                        aria-label="Route type filter">
+
+                        <option value="all">All Routes</option>
+                        <option value="direct">Direct</option>
+                        <option value="connecting">Connecting</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- ROUTE COMPARISON -->
+
+            <div id="routeComparison" class="comparison-grid"></div>
+
+
+            <!-- BUS RESULTS -->
+
+            <div class="results-grid" id="busResults">
+
+                <div class="empty-state">
+
+                    <span>↗</span>
+
+                    <h3>Your routes will appear here</h3>
+
+                    <p>
+                        Search for a journey above.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ROUTE TIMELINE -->
+
+            <div id="routeTimeline" class="timeline-section"></div>
+
+        </section>
+
+
+        <!-- ================= FAVOURITES ================= -->
+
+        <section class="section favorites-section" id="favorites">
+
+            <div class="section-heading">
+
+                <span class="eyebrow">YOUR SHORTCUTS</span>
+
+                <h2>Your favourite journeys.</h2>
+
+                <p>
+                    Save your frequently travelled routes
+                    for quick access.
+                </p>
+
+            </div>
+
+            <div id="favoriteRoutes" class="favorites-grid">
+
+                <div class="empty-state">
+                    You haven't saved any journeys yet.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MAP ================= -->
+
+        <section class="section map-section" id="map">
+
+            <div>
+
+                <span class="section-kicker">
+                    EXPLORE THE CITY
+                </span>
+
+                <h2>
+                    Know your route.<br>
+                    <em>Enjoy the ride.</em>
+                </h2>
+
+                <p>
+                    Explore Mangaluru and view your selected
+                    journey on the map.
+                </p>
+
+            </div>
+
+
+            <div id="routeMap"></div>
+
+            <p id="mapMessage" class="map-note">
+                Select your source and destination to view your route.
+            </p>
+
+        </section>
+
+
+        <!-- ================= FEEDBACK ================= -->
+
+        <section class="section" id="feedback">
+
+            <div class="section-heading">
+
+                <span class="section-kicker">
+                    YOUR VOICE MATTERS
+                </span>
+
+                <h2>
+                    Help make every journey <em>better.</em>
+                </h2>
+
+                <p>
+                    Share feedback or a community-reported
+                    delay update.
+                </p>
+
+            </div>
+
+
+            <div class="community-grid">
+
+
+                <!-- FEEDBACK FORM -->
+
+                <form class="form-card" id="feedbackForm">
+
+                    <h3>Share your feedback</h3>
+
+                    <label for="feedbackText">
+                        Your feedback
+                    </label>
+
+                    <textarea
+                        id="feedbackText"
+                        rows="4"
+                        required
+                        placeholder="Write your feedback..."></textarea>
+
+                    <button class="button button-dark" type="submit">
+                        Submit Feedback →
+                    </button>
+
+                </form>
+
+
+                <!-- DELAY REPORT FORM -->
+
+                <form class="form-card" id="reportForm">
+
+                    <h3>Report a bus delay</h3>
+
+                    <label for="reportLocation">
+                        Location / bus route
+                    </label>
+
+                    <input
+                        id="reportLocation"
+                        type="text"
+                        required
+                        placeholder="e.g. Statebank to Hampankatta">
+
+
+                    <label for="reportType">
+                        Report type
+                    </label>
+
+                    <select id="reportType">
+
+                        <option>Bus delayed</option>
+                        <option>Route changed</option>
+                        <option>Bus not arrived</option>
+                        <option>Other</option>
+
+                    </select>
+
+
+                    <label for="reportDescription">
+                        Details
+                    </label>
+
+                    <textarea
+                        id="reportDescription"
+                        rows="3"
+                        required
+                        placeholder="Add useful details..."></textarea>
+
+
+                    <button class="button button-dark" type="submit">
+                        Submit Report →
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <p class="demo-note">
+                Forms are stored only for the current browser session.
+                They are not sent to a server.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="site-footer">
+
+        <a class="footer-brand" href="#home">
+            RAASTA<span>.</span>
+        </a>
+
+        <p>
+            Your City. Your Route. Your Way.
+        </p>
+
+        <small>
+            © 2026 RAASTA · Mangaluru bus journey planner demo
+        </small>
+
+    </footer>
+
+
+    <!-- ================= MOVING BUS ON SCROLL ================= -->
+
+    <div class="scroll-journey" id="scrollJourney">
+
+        <!-- Vertical road -->
+
+        <div class="road-track">
+
+            <div class="road-progress" id="roadProgress"></div>
+
+        </div>
+
+
+        <!-- Moving bus -->
+
+        <div class="moving-bus" id="movingBus">
+
+            <svg viewBox="0 0 64 64">
+
+                <rect x="9" y="8" width="46" height="46"
+                    rx="10" fill="#E5B83B"/>
+
+                <rect x="15" y="14" width="34" height="19"
+                    rx="4" fill="#171717"/>
+
+                <rect x="18" y="17" width="13" height="13"
+                    rx="2" fill="#F3F0E8"/>
+
+                <rect x="34" y="17" width="12" height="13"
+                    rx="2" fill="#F3F0E8"/>
+
+                <rect x="17" y="37" width="30" height="5"
+                    rx="2" fill="#171717"/>
+
+                <circle cx="19" cy="49" r="4" fill="#171717"/>
+
+                <circle cx="45" cy="49" r="4" fill="#171717"/>
+
+            </svg>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <!-- Leaflet -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Existing website JavaScript -->
+    <script src="script.js"></script>
+
+
+    <!-- BUS SCROLL ANIMATION SCRIPT -->
+
+    <script>
+
+        const movingBus = document.getElementById("movingBus");
+        const roadProgress = document.getElementById("roadProgress");
+
+        let animationFrame = null;
+
+        function updateBusAnimation() {
+
+            if (!movingBus || !roadProgress) return;
+
+            const scrollTop = window.scrollY;
+
+            const maxScroll =
+                document.documentElement.scrollHeight - window.innerHeight;
+
+            const progress = maxScroll > 0
+                ? Math.min(Math.max(scrollTop / maxScroll, 0), 1)
+                : 0;
+
+            movingBus.style.top = (progress * 100) + "%";
+
+            roadProgress.style.height = (progress * 100) + "%";
+        }
+
+        window.addEventListener("scroll", function () {
+
+            if (animationFrame) {
+                cancelAnimationFrame(animationFrame);
+            }
+
+            animationFrame = requestAnimationFrame(function () {
+                updateBusAnimation();
+                animationFrame = null;
+            });
+
+        }, { passive: true });
+
+        window.addEventListener("resize", updateBusAnimation);
+
+        // Set initial position
+        updateBusAnimation();
+
+    </script>
+
+</body>
+</html>
